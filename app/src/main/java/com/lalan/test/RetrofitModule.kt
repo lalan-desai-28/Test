@@ -1,7 +1,9 @@
 package com.lalan.test
 
+import com.google.gson.GsonBuilder
 import com.lalan.test.repository.LoginService
 import com.lalan.test.repository.OTPVerificationService
+import com.lalan.test.repository.ProfileService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,8 +23,13 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun provideRetroFitObject(baseUrl: String): Retrofit =
-        Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create())
-            .build()
+        Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder()
+                    .setLenient()
+                    .create()
+            )
+        ).build()
 
     @Provides
     @Singleton
@@ -34,5 +41,9 @@ object RetrofitModule {
     fun provideOTPVService(retrofit: Retrofit): OTPVerificationService =
         retrofit.create(OTPVerificationService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideEditProfileService(retrofit: Retrofit): ProfileService =
+        retrofit.create(ProfileService::class.java)
 
 }

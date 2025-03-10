@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".fragments.ProfileSetupTwo">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile Setup"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:text="Please complete the fields below to set up your profile."
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/edittext_corner_drawable"
+        app:cardCornerRadius="100dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:src="@drawable/profile_placeholder" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_corner_drawable"
+        android:drawableStart="@drawable/name_icon"
+        android:drawablePadding="10dp"
+        android:hint="Username"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:padding="18dp"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_corner_drawable"
+        android:drawableStart="@drawable/gender_icon"
+        android:drawablePadding="10dp"
+        android:hint="Gender"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:padding="18dp"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <EditText
+        android:id="@+id/dobEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_corner_drawable"
+        android:drawableStart="@drawable/bio_icon"
+        android:drawablePadding="10dp"
+        android:hint="Bio"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:padding="18dp"
+        android:textSize="25sp"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Previous" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Next" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

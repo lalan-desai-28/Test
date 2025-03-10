@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Test"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileSetupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LocationPermissionActivity"
+            android:exported="false" />
+        <activity
             android:name=".DashboardActivvity"
             android:exported="false" />
         <activity

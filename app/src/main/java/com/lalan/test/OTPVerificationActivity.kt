@@ -63,19 +63,16 @@ class OTPVerificationActivity : AppCompatActivity() {
 
         otpVerificationViewModel.otpVerificationResult.observe(this) { otpVResponse ->
             if (otpVResponse.code() == 200) {
-                val dashboardIntent = Intent(this, DashboardActivvity::class.java)
 
-                //  val gson = Gson()
-                //  val dataAsString = gson.toJson(otpVResponse.body()?.data)
-                //dashboardIntent.putExtra("data", dataAsString);
-
-                dashboardIntent.putExtra("data", otpVResponse.body()?.data)
+                val locationIntent = Intent(this, LocationPermissionActivity::class.java)
+                locationIntent.putExtra("data", otpVResponse.body()?.data)
+                // saving the token.
                 val sp = getSharedPreferences("session", MODE_PRIVATE)
                 sp.edit().putString("token", otpVResponse.headers().get("X-Authorization-Token"))
-                    .commit()
+                    .apply()
 
                 finish()
-                startActivity(dashboardIntent)
+                startActivity(locationIntent)
             } else {
                 val gson = Gson()
                 val message = gson.fromJson(
