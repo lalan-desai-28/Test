@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -46,7 +48,16 @@ dependencies {
     implementation(libs.squareup.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.github.glide)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+kapt {
+    correctErrorTypes = true
 }

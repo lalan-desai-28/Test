@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface OTPVerificationService {
     @FormUrlEncoded
-    @POST("/api/v1/verify-otp")
+    @POST("verify-otp")
     fun verifyOTP(
         @Field("contact_number") contactNumber: String, @Field("otp") otp: Int
     ): Call<OTPVerificationResponse>

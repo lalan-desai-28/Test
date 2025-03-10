@@ -13,7 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import com.lalan.test.model.OTPVerificationResponse
 import com.lalan.test.viewmodel.OTPVerificationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OTPVerificationActivity : AppCompatActivity() {
 
     private lateinit var resendOTPTextView: TextView
@@ -63,9 +65,15 @@ class OTPVerificationActivity : AppCompatActivity() {
             if (otpVResponse.code() == 200) {
                 val dashboardIntent = Intent(this, DashboardActivvity::class.java)
 
-                val gson = Gson()
-                val dataAsString = gson.toJson(otpVResponse.body()?.data)
-                dashboardIntent.putExtra("data", dataAsString);
+                //  val gson = Gson()
+                //  val dataAsString = gson.toJson(otpVResponse.body()?.data)
+                //dashboardIntent.putExtra("data", dataAsString);
+
+                dashboardIntent.putExtra("data", otpVResponse.body()?.data)
+                val sp = getSharedPreferences("session", MODE_PRIVATE)
+                sp.edit().putString("token", otpVResponse.headers().get("X-Authorization-Token"))
+                    .commit()
+
                 finish()
                 startActivity(dashboardIntent)
             } else {

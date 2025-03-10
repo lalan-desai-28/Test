@@ -1,5 +1,7 @@
 package com.lalan.test.model
 
+import java.io.Serializable
+
 data class OTPVerificationResponse(val data: Data, val meta: Meta)
 
 data class Data(
@@ -21,4 +23,4 @@ data class Data(
     val is_following: Int,
     val is_blocked: Int,
     val share_locatio: Int
-)
+) : Serializable
