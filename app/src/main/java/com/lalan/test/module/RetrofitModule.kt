@@ -1,4 +1,4 @@
-package com.lalan.test
+package com.lalan.test.module
 
 import com.google.gson.GsonBuilder
 import com.lalan.test.repository.LoginService
@@ -8,6 +8,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -22,14 +24,26 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideRetroFitObject(baseUrl: String): Retrofit =
-        Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(
-            GsonConverterFactory.create(
-                GsonBuilder()
-                    .setLenient()
-                    .create()
-            )
-        ).build()
+    fun provideRetroFitObject(baseUrl: String): Retrofit {
+
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val httpClient = OkHttpClient.Builder()
+        httpClient.addInterceptor(logging)
+
+
+        return Retrofit.Builder().baseUrl(baseUrl)
+            .client(httpClient.build())
+
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder()
+                        .setLenient()
+                        .create()
+                )
+            ).build()
+
+    }
 
     @Provides
     @Singleton

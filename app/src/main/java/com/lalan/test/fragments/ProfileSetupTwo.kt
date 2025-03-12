@@ -11,10 +11,6 @@ import com.lalan.test.viewmodel.EditProfileViewModel
 
 class ProfileSetupTwo(val initialData: Data, editProfileViewModel : EditProfileViewModel) : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

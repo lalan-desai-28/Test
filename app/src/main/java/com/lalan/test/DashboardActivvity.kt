@@ -8,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
 import com.lalan.test.model.Data
-import com.lalan.test.model.OTPVerificationResponse
 
 
 class DashboardActivvity : AppCompatActivity() {
@@ -37,13 +35,6 @@ class DashboardActivvity : AppCompatActivity() {
         bioTextView = findViewById(R.id.bioTextView)
         interestsTextView = findViewById(R.id.interestsTextView)
 
-
-//        val gson = Gson()
-//        val dataAsString = intent.getStringExtra("data")
-//        val userDataObject: Data = gson.fromJson(
-//            dataAsString,
-//            Data::class.java
-//        )
 
         val userDataObject = (intent.getSerializableExtra("data") as Data)
 

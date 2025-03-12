@@ -30,6 +30,11 @@ class LocationPermissionActivity : AppCompatActivity() {
 
         val data = intent.extras?.getSerializable("data") as Data
 
+        //REMOVE THIS!!!
+        val setupIntent = Intent(this, ProfileSetupActivity::class.java)
+        setupIntent.putExtra("data", data)
+        startActivity(setupIntent)
+
         dontAllowTextview.setOnClickListener {
             val setupIntent = Intent(this, ProfileSetupActivity::class.java)
             setupIntent.putExtra("data", data)

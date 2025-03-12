@@ -46,9 +46,13 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
+
+        // REMOVE THIS!!!!
+        loginViewModel.performLogin("+1" + mobileNumberEditText.text.toString())
+
         continueButton.setOnClickListener {
 
-            // Checking if the length is 10
+
             if (mobileNumberEditText.text.length != 10) {
                 Toast.makeText(this, "Mobile number length should be 10.", Toast.LENGTH_SHORT)
                     .show()

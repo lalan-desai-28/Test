@@ -11,7 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
-import com.lalan.test.model.OTPVerificationResponse
+import com.lalan.test.model.UserProfileResponse
 import com.lalan.test.viewmodel.OTPVerificationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,6 +49,13 @@ class OTPVerificationActivity : AppCompatActivity() {
         mobileNumberDescTextView.text =
             "We have sent the verification code to your $contactNumber mobile number."
 
+
+        // REMOVE THIS!!!!
+        otpVerificationViewModel.verifyOTP(
+            "+1${contactNumber.toString()}",
+            otpEditText.text.toString()
+        )
+
         verifyButton.setOnClickListener {
             if (otpEditText.text.length < 4) {
                 Toast.makeText(this, "OTP can not be empty!", Toast.LENGTH_SHORT).show()
@@ -71,13 +78,16 @@ class OTPVerificationActivity : AppCompatActivity() {
                 sp.edit().putString("token", otpVResponse.headers().get("X-Authorization-Token"))
                     .apply()
 
+                MyApplication.sessionToken =
+                    otpVResponse.headers().get("X-Authorization-Token") ?: ""
+
                 finish()
                 startActivity(locationIntent)
             } else {
                 val gson = Gson()
                 val message = gson.fromJson(
                     otpVResponse.errorBody()!!.charStream(),
-                    OTPVerificationResponse::class.java
+                    UserProfileResponse::class.java
                 )
 
                 Toast.makeText(
