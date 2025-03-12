@@ -1,6 +1,7 @@
 package com.lalan.test.repository
 
-import com.lalan.test.model.OTPVerificationResponse
+
+import com.lalan.test.model.UserProfileResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -11,5 +12,5 @@ interface OTPVerificationService {
     @POST("verify-otp")
     fun verifyOTP(
         @Field("contact_number") contactNumber: String, @Field("otp") otp: Int
-    ): Call<OTPVerificationResponse>
+    ): Call<UserProfileResponse>
 }

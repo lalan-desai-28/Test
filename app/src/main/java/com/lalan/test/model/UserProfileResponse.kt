@@ -2,7 +2,7 @@ package com.lalan.test.model
 
 import java.io.Serializable
 
-data class OTPVerificationResponse(val data: Data, val meta: Meta)
+data class UserProfileResponse(val data: Data, val meta: Meta)
 
 data class Data(
     val id: Int,

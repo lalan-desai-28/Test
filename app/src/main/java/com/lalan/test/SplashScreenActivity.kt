@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,11 +23,12 @@ class SplashScreenActivity : AppCompatActivity() {
             insets
         }
 
-        finish()
+
+        // val token = getSharedPreferences("session", MODE_PRIVATE).getString("token", "")
+
         val loginIntent = Intent(this, LoginActivity::class.java)
         startActivity(loginIntent)
 
+
     }
-
-
 }
