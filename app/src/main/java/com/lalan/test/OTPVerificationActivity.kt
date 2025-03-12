@@ -50,12 +50,6 @@ class OTPVerificationActivity : AppCompatActivity() {
             "We have sent the verification code to your $contactNumber mobile number."
 
 
-        // REMOVE THIS!!!!
-        otpVerificationViewModel.verifyOTP(
-            "+1${contactNumber.toString()}",
-            otpEditText.text.toString()
-        )
-
         verifyButton.setOnClickListener {
             if (otpEditText.text.length < 4) {
                 Toast.makeText(this, "OTP can not be empty!", Toast.LENGTH_SHORT).show()
@@ -71,25 +65,24 @@ class OTPVerificationActivity : AppCompatActivity() {
         otpVerificationViewModel.otpVerificationResult.observe(this) { otpVResponse ->
             if (otpVResponse.code() == 200) {
 
-                val locationIntent = Intent(this, LocationPermissionActivity::class.java)
-                locationIntent.putExtra("data", otpVResponse.body()?.data)
-                // saving the token.
+                val mainDashboardIntent = Intent(this, MainDashboardActivity::class.java)
+
                 val sp = getSharedPreferences("session", MODE_PRIVATE)
                 sp.edit().putString("token", otpVResponse.headers().get("X-Authorization-Token"))
                     .apply()
 
                 MyApplication.sessionToken =
                     otpVResponse.headers().get("X-Authorization-Token") ?: ""
+                MyApplication.userProfile = otpVResponse.body()
 
+                startActivity(mainDashboardIntent)
                 finish()
-                startActivity(locationIntent)
             } else {
                 val gson = Gson()
                 val message = gson.fromJson(
                     otpVResponse.errorBody()!!.charStream(),
                     UserProfileResponse::class.java
                 )
-
                 Toast.makeText(
                     this,
                     message.meta.message,

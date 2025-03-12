@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="offWhite">#333333</color>
+
+    <color name="postBackground">#F3F7F7</color>
 </resources>

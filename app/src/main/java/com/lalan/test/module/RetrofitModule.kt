@@ -1,6 +1,8 @@
 package com.lalan.test.module
 
 import com.google.gson.GsonBuilder
+import com.lalan.test.repository.DashboardDataService
+import com.lalan.test.repository.LikeUnlikeService
 import com.lalan.test.repository.LoginService
 import com.lalan.test.repository.OTPVerificationService
 import com.lalan.test.repository.ProfileService
@@ -59,5 +61,15 @@ object RetrofitModule {
     @Singleton
     fun provideEditProfileService(retrofit: Retrofit): ProfileService =
         retrofit.create(ProfileService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDashboardDataService(retrofit: Retrofit): DashboardDataService =
+        retrofit.create(DashboardDataService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideLikeUnlikeService(retrofit: Retrofit): LikeUnlikeService =
+        retrofit.create(LikeUnlikeService::class.java)
 
 }

@@ -77,15 +77,7 @@ class ProfileSetupActivity : AppCompatActivity() {
         }
 
 
-        editProfileViewModel.editProfileResult.observe(
-            this
-        ) { editProfileResponse ->
-            if (editProfileResponse != null) {
-                if (editProfileResponse.code() == 200)
-                    viewPager.setCurrentItem(viewPager.currentItem + 1, true)
-                editProfileViewModel.editProfileResult.value = null
-            }
-        }
+
 
 
 

@@ -39,19 +39,17 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginResult.observe(this, { response ->
             if (response.code() == 200) {
                 val otpVerificationIntent = Intent(this, OTPVerificationActivity::class.java)
-                otpVerificationIntent.putExtra("contactNumber", mobileNumberEditText.text.toString())
+                otpVerificationIntent.putExtra(
+                    "contactNumber",
+                    mobileNumberEditText.text.toString()
+                )
                 startActivity(otpVerificationIntent)
             } else {
                 Toast.makeText(this, "Error: ${response.body()?.meta}", Toast.LENGTH_LONG).show()
             }
         })
 
-
-        // REMOVE THIS!!!!
-        loginViewModel.performLogin("+1" + mobileNumberEditText.text.toString())
-
         continueButton.setOnClickListener {
-
 
             if (mobileNumberEditText.text.length != 10) {
                 Toast.makeText(this, "Mobile number length should be 10.", Toast.LENGTH_SHORT)
@@ -60,7 +58,6 @@ class LoginActivity : AppCompatActivity() {
             }
 
             loginViewModel.performLogin("+1" + mobileNumberEditText.text.toString())
-
 
         }
     }

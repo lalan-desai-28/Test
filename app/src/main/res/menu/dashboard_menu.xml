@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:showAsAction="always"
+
+        />
+
+    <item
+        android:id="@+id/evenLifht"
+        android:icon="@drawable/event_lifht"
+        android:title="Lifht"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/members"
+        android:icon="@drawable/members_light"
+        android:title="Members"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile"
+        android:title="Profile"
+        app:showAsAction="always" />
+
+
+</menu>

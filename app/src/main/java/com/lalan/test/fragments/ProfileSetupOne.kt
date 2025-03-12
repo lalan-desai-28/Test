@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -88,20 +86,6 @@ class ProfileSetupOne(
             dobEditText.text.toString(),
             token
         )
-
-        editProfileViewModel.editProfileResult.observe(this as LifecycleOwner) { editProfileResponse ->
-            if (editProfileResponse.code() == 200) {
-
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Error: ${editProfileResponse.body()?.meta?.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
     }
-
-
 }
 

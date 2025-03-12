@@ -10,13 +10,9 @@ import retrofit2.http.POST
 
 interface ProfileService {
 
-    @FormUrlEncoded
     @POST("edit-profile")
-    fun getProfile(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("dob") dob: String,
-        @Header("Authorization") string: String,
+    fun getFullProfile(
+        @Header("Authorization") authToken: String,
     ): Call<UserProfileResponse>
 
     @FormUrlEncoded
